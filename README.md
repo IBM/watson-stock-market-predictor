@@ -43,7 +43,7 @@ This tutorial will assume you know how to provision services from the Catalog, u
 10. [Interacting with the Watson Machine Learning API](#10-interacting-with-the-watson-machine-learning-api)
 
 
-## 1.  Create a new project in Watson Studio
+### 1.  Create a new project in Watson Studio
 
 After creating an instance of Watson Studio, you will see the following screen:
 
@@ -59,7 +59,7 @@ Now you will be directed to the project creation page shown below. You must give
 
 ![alt text](doc/source/images/07.png)
 
-## 2.  Mining Data and Making forecasts with a Python Notebook
+### 2.  Mining Data and Making forecasts with a Python Notebook
 
 After your project is created, you will be directed to the project overview page. In this page you can oversee some general aspects of your project, such as collaborators and data consumed. You should now go to the `Assets` tab, as shown in the picture below.
 
