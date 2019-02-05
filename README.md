@@ -32,18 +32,18 @@ When the reader has completed this Code Pattern, they will understand how to:
 This tutorial will assume you know how to provision services from the Catalog, using the IBM Cloud Web Portal. Three services are required for this code pattern: `IBM Cloud Object Storage`, `Watson Machine Learning` and `Watson Studio`. After you create one instance of each service, you can proceed (The Lite plans are sufficient for running this Code pattern).
 
 1. [Create a new project in Watson Studio](#1-create-a-new-project-in-watson-studio)
-1. [Mining data and making forecasts with a Python notebook](#2-mining-data-and-making-forecasts-with-a-python-notebook)
-1. [Configuring the Quandl API-KEY](#3-configuring-the-quandl-api-key)
-1. [Configuring the IBM Cloud Object Storage credentials in the notebook](#4-configuring-the-ibm-cloud-object-storage-credentials-in-the-notebook)
-1. [Importing the mined data as an asset into the Watson Studio project](#5-importing-the-mined-data-as-an-asset-into-the-watson-studio-project)
-1. [Cleansing data with Data Refinery](#6-cleansing-data-with-data-refinery)
-1. [Making forecasts with SPSS modeler flow](#7-making-forecasts-with-spss-modeler-flow)
-1. [Visualizing modeler flow Results with a Python notebook](#8-visualizing-modeler-flow-results-with-a-python-notebook)
-1. [Deploying a Modeler flow model in Watson Machine Learning](#9-deploying-a-modeler-flow-model-in-watson-machine-learning)
-1. [Interacting with the Watson Machine Learning API](#10-interacting-with-the-watson-machine-learning-api)
+2. [Mining data and making forecasts with a Python notebook](#2-mining-data-and-making-forecasts-with-a-python-notebook)
+3. [Configuring the Quandl API-KEY](#3-configuring-the-quandl-api-key)
+4. [Configuring the IBM Cloud Object Storage credentials in the notebook](#4-configuring-the-ibm-cloud-object-storage-credentials-in-the-notebook)
+5. [Importing the mined data as an asset into the Watson Studio project](#5-importing-the-mined-data-as-an-asset-into-the-watson-studio-project)
+6. [Cleansing data with Data Refinery](#6-cleansing-data-with-data-refinery)
+7. [Making forecasts with SPSS modeler flow](#7-making-forecasts-with-spss-modeler-flow)
+8. [Visualizing modeler flow Results with a Python notebook](#8-visualizing-modeler-flow-results-with-a-python-notebook)
+9. [Deploying a Modeler flow model in Watson Machine Learning](#9-deploying-a-modeler-flow-model-in-watson-machine-learning)
+10. [Interacting with the Watson Machine Learning API](#10-interacting-with-the-watson-machine-learning-api)
 
 
-# 1.  Create a new project in Watson Studio
+## 1.  Create a new project in Watson Studio
 
 After creating an instance of Watson Studio, you will see the following screen:
 
