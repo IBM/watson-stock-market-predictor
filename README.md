@@ -31,7 +31,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 This tutorial will assume you know how to provision services from the Catalog, using the IBM Cloud Web Portal. Three services are required for this code pattern: `IBM Cloud Object Storage`, `Watson Machine Learning` and `Watson Studio`. After you create one instance of each service, you can proceed (The Lite plans are sufficient for running this Code pattern).
 
-1. [Create a new project in Watson Studio](#1-create-a-new-project-in-watson-studio)
+1. [Create a new project in Watson Studio](##1-create-a-new-project-in-watson-studio)
 1. [Mining data and making forecasts with a Python notebook](#2-mining-data-and-making-forecasts-with-a-python-notebook)
 1. [Configuring the Quandl API-KEY](#3-configuring-the-quandl-api-key)
 1. [Configuring the IBM Cloud Object Storage credentials in the notebook](#4-configuring-the-ibm-cloud-object-storage-credentials-in-the-notebook)
