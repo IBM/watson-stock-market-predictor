@@ -182,19 +182,19 @@ In the Modeler Flow creation page, select the `From file` option and upload the 
 
 After Watson Studio finishes loading, you will see the flow shown in the picture below. This flow consists on an `Data Asset` block, where we set the source file; a `Filter` block that is used to rename the columns; a `Type` block, used to set the target and input columns; a `Sample` block, to split the source data into train and test datasets; and a `Time Series` modeler block, to generate the predictions. The dark blue blocks are outputs.
 
-![alt text](doc/source/images/35.png)
+![alt text](doc/source/images/35-v1.png)
 
 Before executing it, we need to set the source data. To do this, click at the `Data Asset` block and select in the right panel the `<STOCK_TICKER>.shaped_csv.csv` file (AAPL in this example).
 
-![alt text](doc/source/images/36.png)
+![alt text](doc/source/images/36-v1.png)
 
 Click `Save` and then `Run` at the indicated button:
 
-![alt text](doc/source/images/37.png)
+![alt text](doc/source/images/37-v1.png)
 
 After the flow finishes execution, you will be able to see the outputs at the right panel.
 
-![alt text](doc/source/images/38.png)
+![alt text](doc/source/images/38-v1.png)
 
 ### 8. Deploying the Modeler Flow Model with Watson Machine Learning
 
@@ -202,39 +202,39 @@ In this section you'll learn on how to store a model trained with Watson Studio 
 
 First, go back to the Modeler Flow canvas and right-click the `Table` output node and select `Save branch as a model`, as indicated in the picture below:
 
-![alt text](doc/source/images/39.png)
+![alt text](doc/source/images/39-v1.png)
 
 You'll be directed to the `Save Model` page. Save the model as `Scoring Branch` and give a name and description to your model. In this case, the model predicts the closing end-of-day value for Apple Inc. stocks. You also need to select an instance of Watson Machine Learning, previously created in the beggining of this tutorial. In the picture below the WML instance is named `ibmdegla-watson-ml`.
 
-![alt text](doc/source/images/40.png)
+![alt text](doc/source/images/40-v1.png)
 
 After saving the model you'll be able to see it in the Watson Studio project `Assets` tab. Click on the saved model (in the picture below the model is named `AAPL_Model_Scoring_Branch_v2`):
 
-![alt text](doc/source/images/41.png)
+![alt text](doc/source/images/41-v1.png)
 
 You will see now some information about your saved model, like the input schema and running environment. Click on the deployments tab.
 
-![alt text](doc/source/images/42.png)
+![alt text](doc/source/images/42-v1.png)
 
 Click in `Add deployment`, in the right side of the screen:
 
-![alt text](doc/source/images/43.png)
+![alt text](doc/source/images/43-v1.png)
 
 Give a name and description to your model deployment and click `Save`.
 
-![alt text](doc/source/images/44.png)
+![alt text](doc/source/images/44-v1.png)
 
 After the deployment is finished, you will see `DEPLOY_SUCCESS` in the status field. Click in the deployment (in the picture below the deployment is named `AAPL_Model_Deployment`).
 
-![alt text](doc/source/images/45.png)
+![alt text](doc/source/images/45-v1.png)
 
 Then click at the `Implementation` tab
 
-![alt text](doc/source/images/46.png)
+![alt text](doc/source/images/46-v1.png)
 
 Copy the `Scoring End-Point` link to your clipboard, as it will be needed later when calling the Watson Machine Learning API. You can also let this browser tab open so you can copy the link later when needed.
 
-![alt text](doc/source/images/47.png)
+![alt text](doc/source/images/47-v1.png)
 
 ### 9. Using and Validating the Model Stored in WML
 
@@ -249,31 +249,31 @@ Click `Create notebook` in the bottom-right corner.
 
 After Watson Studio finishes loading the Python kernel, you will see the following:
 
-![alt text](doc/source/images/48.png)
+![alt text](doc/source/images/48-v1.png)
 
 You can execute cell by cell until the part where IBM COS must be configured.
 
 You have - again - to configure the IBM Cloud Object Storage service credentials. You can use the same easy procedure presented earlier to do this (See Step 4).
  
-![alt text](doc/source/images/49.png)
+![alt text](doc/source/images/49-v1.png)
 
 After configuring IBM COS, the Python Notebook will be able to fetch the csv file with the mined Apple Inc stock data.
 
 You then execute the next cells until section `3.2: Setting Up WML Credentials`.
 
-![alt text](doc/source/images/50.png)
+![alt text](doc/source/images/50-v1.png)
 
 Paste the `Scoring End-Point` link you copied before into the `deployment_endpoint` variable, and your Watson Machine Learning credentials into `wml_credentials` variable. The WML credentials can be found inside the page of the service instance in the IBM Cloud web portal, as shown below:
 
-![alt text](doc/source/images/51.png)
+![alt text](doc/source/images/51-v1.png)
 
 After setting these variables, you can then execute all remaining cells.
 
 In the last section of the Notebook, it is possible to visually validate the predictions made using the model trained with Watson Studio Modeler Flow:
 
-![alt text](doc/source/images/52.png)
+![alt text](doc/source/images/52-v1.png)
 
-![alt text](doc/source/images/53.png)
+![alt text](doc/source/images/53-v1.png)
 
 # Links
 
