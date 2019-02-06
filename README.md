@@ -38,10 +38,8 @@ This tutorial will assume you know how to provision services from the Catalog, u
 5. [Importing the mined data as an asset into the Watson Studio project](#5-importing-the-mined-data-as-an-asset-into-the-watson-studio-project)
 6. [Cleansing data with Data Refinery](#6-cleansing-data-with-data-refinery)
 7. [Making forecasts with SPSS modeler flow](#7-making-forecasts-with-spss-modeler-flow)
-8. [Visualizing modeler flow Results with a Python notebook](#8-visualizing-modeler-flow-results-with-a-python-notebook)
-9. [Deploying a Modeler flow model in Watson Machine Learning](#9-deploying-a-modeler-flow-model-in-watson-machine-learning)
-10. [Interacting with the Watson Machine Learning API](#10-interacting-with-the-watson-machine-learning-api)
-
+8. [Visualizing modeler flow Results with a Python notebook](#8-deploying-the-modeler-flow-model-with-watson-machine-learning)
+9. [Deploying a Modeler flow model in Watson Machine Learning](#9-using-and-validating-the-model-stored-in-wml)
 
 ### 1. Create a new project in Watson Studio
 
