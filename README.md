@@ -241,7 +241,7 @@ After successfully deploying the Apple Inc. stock value forecaster in a Watson M
 Just as it was done before (see Step 2), add a new Notebook asset to your project clicking in the `Add to project` blue button at the top-right corner.
 
 Select the `From URL` option, and paste the following link at the indicated field: 
-`https://github.com/vanderleipf/ibmdegla-ws-projects/blob/master/forecasting-the-stock-market/jupyter-notebooks/using-watson-machine-learning.ipynb`.
+`https://github.com/IBM/watson-stock-market-predictor/blob/master/jupyter-notebooks/using-watson-machine-learning.ipynb`.
 
 Click `Create notebook` in the bottom-right corner.
 
