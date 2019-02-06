@@ -32,18 +32,18 @@ When the reader has completed this Code Pattern, they will understand how to:
 This tutorial will assume you know how to provision services from the Catalog, using the IBM Cloud Web Portal. Three services are required for this code pattern: `IBM Cloud Object Storage`, `Watson Machine Learning` and `Watson Studio`. After you create one instance of each service, you can proceed (The Lite plans are sufficient for running this Code pattern).
 
 1. [Create a new project in Watson Studio](#1-create-a-new-project-in-watson-studio)
-1. [Mining data and making forecasts with a Python notebook](#2-mining-data-and-making-forecasts-with-a-python-notebook)
-1. [Configuring the Quandl API-KEY](#3-configuring-the-quandl-api-key)
-1. [Configuring the IBM Cloud Object Storage credentials in the notebook](#4-configuring-the-ibm-cloud-object-storage-credentials-in-the-notebook)
-1. [Importing the mined data as an asset into the Watson Studio project](#5-importing-the-mined-data-as-an-asset-into-the-watson-studio-project)
-1. [Cleansing data with Data Refinery](#6-cleansing-data-with-data-refinery)
-1. [Making forecasts with SPSS modeler flow](#7-making-forecasts-with-spss-modeler-flow)
-1. [Visualizing modeler flow Results with a Python notebook](#8-visualizing-modeler-flow-results-with-a-python-notebook)
-1. [Deploying a Modeler flow model in Watson Machine Learning](#9-deploying-a-modeler-flow-model-in-watson-machine-learning)
-1. [Interacting with the Watson Machine Learning API](#10-interacting-with-the-watson-machine-learning-api)
+2. [Mining data and making forecasts with a Python notebook](#2-mining-data-and-making-forecasts-with-a-python-notebook)
+3. [Configuring the Quandl API-KEY](#3-configuring-the-quandl-api-key)
+4. [Configuring the IBM Cloud Object Storage credentials in the notebook](#4-configuring-the-ibm-cloud-object-storage-credentials-in-the-notebook)
+5. [Importing the mined data as an asset into the Watson Studio project](#5-importing-the-mined-data-as-an-asset-into-the-watson-studio-project)
+6. [Cleansing data with Data Refinery](#6-cleansing-data-with-data-refinery)
+7. [Making forecasts with SPSS modeler flow](#7-making-forecasts-with-spss-modeler-flow)
+8. [Visualizing modeler flow Results with a Python notebook](#8-visualizing-modeler-flow-results-with-a-python-notebook)
+9. [Deploying a Modeler flow model in Watson Machine Learning](#9-deploying-a-modeler-flow-model-in-watson-machine-learning)
+10. [Interacting with the Watson Machine Learning API](#10-interacting-with-the-watson-machine-learning-api)
 
 
-### 1.  Create a new project in Watson Studio
+### 1. Create a new project in Watson Studio
 
 After creating an instance of Watson Studio, you will see the following screen:
 
@@ -59,20 +59,20 @@ Now you will be directed to the project creation page shown below. You must give
 
 ![alt text](doc/source/images/07.png)
 
-### 2.  Mining Data and Making forecasts with a Python Notebook
+### 2. Mining Data and Making forecasts with a Python Notebook
 
 After your project is created, you will be directed to the project overview page. In this page you can oversee some general aspects of your project, such as collaborators and data consumed. You should now go to the `Assets` tab, as shown in the picture below.
 
 ![alt text](doc/source/images/08.png)
 
-At the assets tab, click on the `Add to project` blue button on the top right corner, and select the asset type as `Notebook`:
+In the assets tab, click on the `Add to project` blue button on the top right corner, and select the asset type as `Notebook`:
 
 ![alt text](doc/source/images/09.png)
 
 ![alt text](doc/source/images/10.png)
 
 Now you will be directed to the notebook creation page. Give a name to the Notebook, and select the desired Python runtime (you can choose the free one). Then, click on the `From URL` tab and paste the following link at the `Notebook URL` field:
-`https://github.com/vanderleipf/ibmdegla-ws-projects/blob/master/forecasting-the-stock-market/jupyter-notebooks/forecasting-the-stock-market.ipynb`. Alternatively you can choose the `From file` option and upload the `forecasting-the-stock-market.ipynb` file, if you have downloaded this repository to your local computer.
+`https://github.com/IBM/watson-stock-market-predictor/blob/master/jupyter-notebooks/forecasting-the-stock-market.ipynb`. Alternatively you can choose the `From file` option and upload the `forecasting-the-stock-market.ipynb` file, if you have downloaded this repository to your local computer.
 
 ![alt text](doc/source/images/11.png)
 
@@ -82,7 +82,7 @@ After click on `Create notebook`, Watson Studio will load the file and start the
 
 There are only two steps that require further action now - the provisioning of an API-KEY for the Quandl database (that can be done for free <a href="https://www.quandl.com/sign-up-modal?defaultModal=showSignUp">at the Quandl website</a>, and the configuration of the IBM Cloud Object Storage credentials at section 4 of the Notebook.
 
-#### i.  Configuring the Quandl API-KEY
+## 3. Configuring the Quandl API-KEY
 
 After registering for a free API-KEY at the Quandl website, you just need to write it at the indicated cell, as shown below.
 
@@ -90,9 +90,9 @@ After registering for a free API-KEY at the Quandl website, you just need to wri
 
 After this step you can execute all the cells - where all the data science is done! - until section 4
 
-#### ii.  Configuring the IBM Cloud Object Storage credentials in the Notebook
+## 4. Configuring the IBM Cloud Object Storage credentials in the Notebook
 
-This step is required so you can export the mined data and also the results of the forecaster to IBM Cloud Object Storage. Using the IBM COS API you can then use the stored data as you wish (publication, further analysis with different tools, etc). In the cell indicated at the picture below, you must complete the `variable cos_credentials` with your IBM COS credentials.
+This step is required so you can export the mined data and also the results of the forecaster to IBM Cloud Object Storage. Using the IBM Cloud Object Storage API you can then use the stored data as you wish (publication, further analysis with different tools, etc). In the cell indicated at the picture below, you must replace the `variable cos_credentials` with your IBM Cloud Object Storage credentials.
 
 ![alt text](doc/source/images/14.png)
 
@@ -102,9 +102,9 @@ There is an easy way to do this. First, click at the indicated button in the top
 
 The file will appear at the right side panel. Click at `Insert to code` and then `Insert credentials`, as shown below. Your credentials will appear at the selected cell.
 
-#### iii.  Importing the Mined Data as an Asset into the Watson Studio Project
+## 5. Importing the Mined Data as an Asset into the Watson Studio Project
 
-![alt text](doc/source/images/16.png)
+![alt text](doc/source/images/16-v1.png)
 
 Don't forget that the variable with the credentials must be named `cos_credentials` for the defined function (in the next cell) to work. You are now ready to upload the two csv files generated, by the analysis to the IBM Cloud Object Storage service.
 
@@ -120,9 +120,7 @@ I'll be able to see the new data assets at the `Assets` tab:
 
 ![alt text](doc/source/images/20.png)
 
-<hr>
-
-### 3.  Cleansing Data with Data Refinery
+## 6. Cleansing Data with Data Refinery
 
 In this step we are going to use Data Refinery to cleanse data - the imported csv files (AAPL.csv, or other financial data collected by you with the Python Notebook). First, click at the `Add to project` blue button at the top right corner and select a new `DATA REFINERY FLOW`.
 
@@ -172,7 +170,7 @@ After the Data Refinery Flow is completed, you will be able to see a new csv fil
 
 This csv file will be the input for SPSS Modeler Flow that will be created next.
 
-### 4.  Making forecasts with SPSS Modeler Flow
+## 7. Making forecasts with SPSS Modeler Flow
 
 With the cleansed `AAPL.shaped_csv.csv` file we can proceed to create the Modeler Flow for forecasting future stock values. Click at the `Add to project` blue button at the top right corner and select a new `MODELER FLOW`.
 
@@ -205,7 +203,7 @@ Clicking at the `Multivar Plot` block we can see the graph with historical and p
 This plot don't have interactive capabilities like Bokeh, that we previously used in a Python Notebook. In the next section it is presented a simple way to visualize this data generated by the modeler flow in a Python notebook.
 
 
-### 5.  Visualizing Modeler Flow Results with a Python Notebook
+## 8. Visualizing Modeler Flow Results with a Python Notebook
 
 Just as it was done before, add a new Notebook asset to your project:
 
@@ -232,7 +230,7 @@ Feel free to change the machine learning models and modeler flow parameters. The
 
 <hr>
 
-### 6.  Deploying a Modeler Flow Model in Watson Machine Learning
+## 9. Deploying a Modeler Flow Model in Watson Machine Learning
 
 In this section you'll learn on how to store a model trained with Watson Studio Modeler Flow and also how to make API calls to your stored model, deployed as a Web Service in Watson Machine Learning.
 
@@ -272,7 +270,7 @@ Copy the `Scoring End-Point` link, as it will be needed later when calling the W
 
 ![alt text](doc/source/images/53.png)
 
-### 7.  Interacting with the Watson Machine Learning API
+## 10. Interacting with the Watson Machine Learning API
 
 After successfully deploying the Apple Inc. stock value forecaster in a Watson Machine Learning instance, you are now able to send new input data to be scored by the model using the generated API. In this section it's demonstrated how to interact with Watson Machine Learning using Python.
 
@@ -301,7 +299,7 @@ You then execute the next cells until section `3.2: Setting Up WML Credentials`.
 
 Paste the `Scoring End-Point` link you copied before into the `deployment_endpoint` variable, and your Watson Machine Learning credentials into `wml_credentials` variable. The WML credentials can be found inside the page of the service instance in the IBM Cloud web portal, as shown below:
 
-![alt text](doc/source/images/58.png)
+![alt text](doc/source/images/58-v1.png)
 
 After setting these variables, you can then execute all cells in this notebook, until you can see the predicted results using Bokeh at the end:
 
@@ -309,7 +307,9 @@ After setting these variables, you can then execute all cells in this notebook, 
 
 # Links
 
-TODO
+* [IBM Watson Studio](https://dataplatform.cloud.ibm.com/docs/content/getting-started/welcome-main.html)
+* [IBM Watson Machine Learning](https://www.ibm.com/cloud/machine-learning)
+* [IBM SPSS Modeler](https://www.ibm.com/products/spss-modeler)
 
 # Learn more
 
