@@ -69,10 +69,15 @@ In the assets tab, click on the `Add to project` blue button on the top right co
 
 ![alt text](doc/source/images/10.png)
 
-Now you will be directed to the notebook creation page. Give a name to the Notebook, and select the desired Python runtime (you can choose the free one). Then, click on the `From URL` tab and paste the following link at the `Notebook URL` field:
-`https://github.com/IBM/watson-stock-market-predictor/blob/master/jupyter-notebooks/forecasting-the-stock-market.ipynb`. Alternatively you can choose the `From file` option and upload the `forecasting-the-stock-market.ipynb` file, if you have downloaded this repository to your local computer.
+Now you will be directed to the notebook creation page. Follow below steps to successfully upload a notebook.
 
-![alt text](doc/source/images/11.png)
+1. Select the `From URL` tab.
+2. Enter a `Name` for the notebook and optionally a description.
+3. Under `Notebook URL` provide the following url: [https://github.com/IBM/watson-stock-market-predictor/blob/master/jupyter-notebooks/forecasting-the-stock-market.ipynb](https://github.com/IBM/watson-stock-market-predictor/blob/master/jupyter-notebooks/forecasting-the-stock-market.ipynb). Alternatively you can choose the `From file` option and upload the `forecasting-the-stock-market.ipynb` file, if you have downloaded this repository to your local computer.
+4. For `Runtime` select the `Spark Python 3.6` option.
+5. Click the `Create` button.
+
+![alt text](doc/source/images/create-notebook.png)
 
 After click on `Create notebook`, Watson Studio will load the file and start the kernel and you will be directed to your notebook environment. From now on the Python Notebook is ready and can be started by clicking at the `RUN` button indicated in the picture below. You can read the instructions and comments in the notebook and start executing cell by cell.
 
