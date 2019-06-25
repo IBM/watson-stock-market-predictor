@@ -6,34 +6,32 @@ Using the IBM Watson Studio and other popular open-source Python libraries for d
 
 When the reader has completed this Code Pattern, they will understand how to:
 
-*  Use Jupyter Notebooks in Watson Studio to mine financial data using public APIs.
-*  Use specialized Watson Studio tools like Data Refinery to prepare data for model training.
-*  Build, train, and save a timeseries model from extracted data, using open-source Python libraries and/or the built-in graphical Modeler Flow in Watson Studio.
-*  Interact with IBM Cloud Object Storage to store and access mined and modeled data. 
-*  Store a model created with Modeler Flow and interact with the Watson Machine Learning service using the Python API.
-*  Generate graphical visualizations of timeseries data using Pandas and Bokeh.
- 
- ![architecture](doc/source/images/architecture.png)
- 
- ## Flow
- 
- 1. Create a Watson Studio project.
- 2. Assign a Cloud object storage to it.
- 3. Load Jupyter notebook to Watson Studio.
- 4. The sample data provided by Quandl API is imported by the notebook.
- 5. Data imported are refined by Data Refinery and saved to Cloud object storage.
- 6. Using SPSS modeler flow to create forecasts
- 7. Importing the Watson Machine Learning model exported from SPSS modeler flow to Watson Machine Learning.
- 8. Exposing Watson Machine Learning model through an API.
- 9. Application use Watson Machine Learning API to create stock market predicitons.
- 
-## Steps
+* Use Jupyter Notebooks in Watson Studio to mine financial data using public APIs.
+* Use specialized Watson Studio tools like Data Refinery to prepare data for model training.
+* Build, train, and save a timeseries model from extracted data, using open-source Python libraries and/or the built-in graphical Modeler Flow in Watson Studio.
+* Interact with IBM Cloud Object Storage to store and access mined and modeled data.
+* Store a model created with Modeler Flow and interact with the Watson Machine Learning service using the Python API.
+* Generate graphical visualizations of timeseries data using Pandas and Bokeh.
 
-This tutorial will assume you know how to provision services from the Catalog, using the IBM Cloud Web Portal. Three services are required for this code pattern: `IBM Cloud Object Storage`, `Watson Machine Learning` and `Watson Studio`. After you create one instance of each service, you can proceed (The Lite plans are sufficient for running this Code pattern).
+## Flow
+
+![architecture](doc/source/images/architecture.png)
+
+1. Create a Watson Studio project.
+2. Assign a Cloud object storage to it.
+3. Load Jupyter notebook to Watson Studio.
+4. The sample data provided by Quandl API is imported by the notebook.
+5. Data imported are refined by Data Refinery and saved to Cloud object storage.
+6. Using SPSS modeler flow to create forecasts
+7. Importing the Watson Machine Learning model exported from SPSS modeler flow to Watson Machine Learning.
+8. Exposing Watson Machine Learning model through an API.
+9. Application use Watson Machine Learning API to create stock market predicitons.
+
+## Steps
 
 1. [Create a new project in Watson Studio](#1-create-a-new-project-in-watson-studio)
 2. [Mining data and making forecasts with a Python notebook](#2-mining-data-and-making-forecasts-with-a-python-notebook)
-3. [Configuring the Quandl API-KEY](#3-configuring-the-quandl-api-key)
+3. [Configuring the Quandl API key](#3-configuring-the-quandl-api-key)
 4. [Configuring the IBM Cloud Object Storage credentials in the notebook](#4-configuring-the-ibm-cloud-object-storage-credentials-in-the-notebook)
 5. [Importing the mined data as an asset into the Watson Studio project](#5-importing-the-mined-data-as-an-asset-into-the-watson-studio-project)
 6. [Cleansing data with Data Refinery](#6-cleansing-data-with-data-refinery)
@@ -43,51 +41,50 @@ This tutorial will assume you know how to provision services from the Catalog, u
 
 ### 1. Create a new project in Watson Studio
 
-After creating an instance of Watson Studio, you will see the following screen:
+* Log into IBM's [Watson Studio](https://dataplatform.cloud.ibm.com). Once in, you'll land on the dashboard.
 
-![alt text](doc/source/images/04.png)
+* Create a new project by clicking `+ New project` and choosing `Data Science`:
 
-After clicking at the `Get Started` button you will be directed to Watson Studio main page, shown below. You can then click on `Create a project` and then select the `Standard` option.
+  ![studio project](https://raw.githubusercontent.com/IBM/pattern-utils/master/watson-studio/new-project-data-science.png)
 
-![alt text](doc/source/images/05.png)
+* Enter a name for the project name and click `Create`.
 
-![alt text](doc/source/images/06.png)
+* **NOTE**: By creating a project in Watson Studio a free tier `Object Storage` service and `Watson Machine Learning` service will be created in your IBM Cloud account. Select the `Free` storage type to avoid fees.
 
-Now you will be directed to the project creation page shown below. You must give a name for your project and also select the `IBM Cloud Object Storage` service you provisioned beforehand, to be used as data storage.
+  ![studio-new-project](https://raw.githubusercontent.com/IBM/pattern-utils/master/watson-studio/new-project-data-science-name.png)
 
-![alt text](doc/source/images/07.png)
+* Upon a successful project creation, you are taken to a dashboard view of your project. Take note of the `Assets` and `Settings` tabs, we'll be using them to associate our project with any external assets (datasets and notebooks) and any IBM cloud services.
+
+  ![studio-project-dashboard](https://raw.githubusercontent.com/IBM/pattern-utils/master/watson-studio/overview-empty.png)
 
 ### 2. Mining Data and Making forecasts with a Python Notebook
 
-After your project is created, you will be directed to the project overview page. In this page you can oversee some general aspects of your project, such as collaborators and data consumed. You should now go to the `Assets` tab, as shown in the picture below.
+* From the new project `Overview` panel, click `+ Add to project` on the top right and choose the `Notebook` asset type.
 
-![alt text](doc/source/images/08.png)
+  ![studio-project-dashboard](https://raw.githubusercontent.com/IBM/pattern-utils/master/watson-studio/add-assets-notebook.png)
 
-In the assets tab, click on the `Add to project` blue button on the top right corner, and select the asset type as `Notebook`:
+* Fill in the following information:
 
-![alt text](doc/source/images/09.png)
+  * Select the `From URL` tab. [1]
+  * Enter a `Name` for the notebook and optionally a description. [2]
+  * Under `Notebook URL` provide the following url: [https://github.com/IBM/watson-stock-market-predictor/blob/master/notebooks/forecasting-the-stock-market.ipynb](https://github.com/IBM/watson-stock-market-predictor/blob/master/notebooks/forecasting-the-stock-market.ipynb) [3]
+  * For `Runtime` select the `Spark Python 3.6` option. [4]
 
-![alt text](doc/source/images/10.png)
+  ![add notebook](https://github.com/IBM/pattern-utils/raw/master/watson-studio/notebook-create-url-spark-py36.png)
 
-Now you will be directed to the notebook creation page. Follow below steps to successfully upload a notebook.
+* Click the `Create` button.
 
-1. Select the `From URL` tab.
-2. Enter a `Name` for the notebook and optionally a description.
-3. Under `Notebook URL` provide the following url: [https://github.com/IBM/watson-stock-market-predictor/blob/master/jupyter-notebooks/forecasting-the-stock-market.ipynb](https://github.com/IBM/watson-stock-market-predictor/blob/master/jupyter-notebooks/forecasting-the-stock-market.ipynb). Alternatively you can choose the `From file` option and upload the `forecasting-the-stock-market.ipynb` file, if you have downloaded this repository to your local computer.
-4. For `Runtime` select the `Spark Python 3.6` option.
-5. Click the `Create` button.
+* **TIP:** Once successfully imported, the notebook should appear in the `Notebooks` section of the `Assets` tab.
 
-![alt text](doc/source/images/create-notebook.png)
-
-After click on `Create notebook`, Watson Studio will load the file and start the kernel and you will be directed to your notebook environment. From now on the Python Notebook is ready and can be started by clicking at the `RUN` button indicated in the picture below. You can read the instructions and comments in the notebook and start executing cell by cell.
+From now on the Python Notebook is ready and can be started by clicking at the `Run` button indicated in the picture below. You can read the instructions and comments in the notebook and start executing cell by cell.
 
 ![alt text](doc/source/images/12.png)
 
-There are only two steps that require further action now - the provisioning of an API-KEY for the Quandl database (that can be done for free <a href="https://www.quandl.com/sign-up-modal?defaultModal=showSignUp">at the Quandl website</a>, and the configuration of the IBM Cloud Object Storage credentials at section 4 of the Notebook.
+There are only two steps that require further action now - the provisioning of an [API key for the Quandl database](https://www.quandl.com/sign-up-modal?defaultModal=showSignUp) (that can be done for free at the Quandl website, and the configuration of the IBM Cloud Object Storage credentials at section 4 of the Notebook.
 
-### 3. Configuring the Quandl API-KEY
+### 3. Configuring the Quandl API key
 
-After registering for a free API-KEY at the Quandl website, you just need to write it at the indicated cell, as shown below.
+After registering for a free API key at the Quandl website, you just need to write it at the indicated cell, as shown below.
 
 ![alt text](doc/source/images/13.png)
 
@@ -99,7 +96,7 @@ This step is required so you can export the mined data and also the results of t
 
 ![alt text](doc/source/images/14.png)
 
-There is an easy way to do this. First, click at the indicated button in the top right corner of the screen and upload the `AAPL.csv` file (provided in this repository, at the `data-samples` directory).
+There is an easy way to do this. First, click at the indicated button in the top right corner of the screen and upload the [`AAPL.csv`](data/AAPL.csv) file.
 
 ![alt text](doc/source/images/15.png)
 
@@ -159,7 +156,7 @@ Lastly, you should change the data types for `COLUMN3`, `COLUMN4`, `COLUMN5`, an
 
 ![alt text](doc/source/images/28.png)
 
-After converting the four columns to Decimal types, you should see something like this (Five columns (one with type Date and four with type Decimal) and a flow with 7 steps): 
+After converting the four columns to Decimal types, you should see something like this (Five columns (one with type Date and four with type Decimal) and a flow with 7 steps):
 
 ![alt text](doc/source/images/29.png)
 
@@ -179,7 +176,7 @@ With the cleansed `AAPL.shaped_csv.csv` file we can proceed to create the Modele
 
 ![alt text](doc/source/images/33.png)
 
-In the Modeler Flow creation page, select the `From file` option and upload the `forecasting-stocks-with-spss-modeler.str` file (provided in this repository). Click at `Create`.
+In the Modeler Flow creation page, select the `From file` option and upload the [`forecasting-stocks-with-spss-modeler.str`](modeler-flows/forecasting-stocks-with-spss-modeler.str) file (provided in this repository). Click at `Create`.
 
 ![alt text](doc/source/images/34.png)
 
@@ -245,8 +242,7 @@ After successfully deploying the Apple Inc. stock value forecaster in a Watson M
 
 Just as it was done before (see Step 2), add a new Notebook asset to your project clicking in the `Add to project` blue button at the top-right corner.
 
-Select the `From URL` option, and paste the following link at the indicated field: 
-`https://github.com/IBM/watson-stock-market-predictor/blob/master/jupyter-notebooks/using-watson-machine-learning.ipynb`.
+Select the `From URL` option, and paste the following link at the indicated field: [`https://github.com/IBM/watson-stock-market-predictor/blob/master/notebooks/using-watson-machine-learning.ipynb`](https://github.com/IBM/watson-stock-market-predictor/blob/master/notebooks/using-watson-machine-learning.ipynb).
 
 Click `Create notebook` in the bottom-right corner.
 
@@ -257,7 +253,7 @@ After Watson Studio finishes loading the Python kernel, you will see the followi
 You can execute cell by cell until the part where IBM COS must be configured.
 
 You have - again - to configure the IBM Cloud Object Storage service credentials. You can use the same easy procedure presented earlier to do this (See Step 4).
- 
+
 ![alt text](doc/source/images/49-v1.png)
 
 After configuring IBM COS, the Python Notebook will be able to fetch the csv file with the mined Apple Inc stock data.
@@ -278,17 +274,19 @@ In the last section of the Notebook, it is possible to visually validate the pre
 
 ![alt text](doc/source/images/53-v1.png)
 
-# Links
+## Links
 
-* [IBM Watson Studio](https://dataplatform.cloud.ibm.com/docs/content/getting-started/welcome-main.html)
+* [IBM Watson Studio](https://dataplatform.cloud.ibm.com)
 * [IBM Watson Machine Learning](https://www.ibm.com/cloud/machine-learning)
 * [IBM SPSS Modeler](https://www.ibm.com/products/spss-modeler)
 
-# Learn more
+## Learn more
 
 * **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/code/technologies/artificial-intelligence/).
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
-* **With Watson**: Want to take your Watson app to the next level? Looking to utilize Watson Brand assets? [Join the With Watson program](https://www.ibm.com/watson/with-watson/) to leverage exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
 
-# License
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
+## License
+
+This code pattern is licensed under the Apache Software License, Version 2. Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
+
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
