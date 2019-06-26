@@ -68,9 +68,9 @@ When the reader has completed this Code Pattern, they will understand how to:
   * Select the `From URL` tab. [1]
   * Enter a `Name` for the notebook and optionally a description. [2]
   * Under `Notebook URL` provide the following url: [https://github.com/IBM/watson-stock-market-predictor/blob/master/notebooks/forecasting-the-stock-market.ipynb](https://github.com/IBM/watson-stock-market-predictor/blob/master/notebooks/forecasting-the-stock-market.ipynb) [3]
-  * For `Runtime` select the `Spark Python 3.6` option. [4]
+  * For `Runtime` select the `Python 3.5` option. [4]
 
-  ![add notebook](https://github.com/IBM/pattern-utils/raw/master/watson-studio/notebook-create-url-spark-py36.png)
+  ![add notebook](https://github.com/IBM/pattern-utils/raw/master/watson-studio/notebook-create-url-py35.png)
 
 * Click the `Create` button.
 
