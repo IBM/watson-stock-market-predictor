@@ -1,0 +1,25 @@
+name: powerai16
+channels:
+  - https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/linux-ppc64le/
+  - defaults
+dependencies:
+  - conda=4.5.12
+  - jupyter
+  - tornado=5.1.1
+  - sparkmagic
+  - numpy
+  - numba
+  - openblas 
+  - pandas
+  - python=3.6.8
+  - keras
+  - matplotlib
+  - scikit-learn
+  - scipy
+  - cuml
+  - cudf
+  - powerai=1.6.1
+  - cudatoolkit-dev
+  - pai4sk=1.4.0
+  - pip:
+    - sparkmagic
