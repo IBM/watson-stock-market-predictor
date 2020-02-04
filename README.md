@@ -156,15 +156,17 @@ Lastly, you should change the data types for `COLUMN3`, `COLUMN4`, `COLUMN5`, an
 
 ![alt text](doc/source/images/28.png)
 
-After converting the four columns to Decimal types, you should see something like this (Five columns (one with type Date and four with type Decimal) and a flow with 7 steps):
+After converting the four columns to Decimal types, you should see something like this (Five columns (one with type Date and four with type Decimal) and a flow with 8 steps):
 
 ![alt text](doc/source/images/29.png)
 
-If everything is correct, click at the `Run Data Refinery Flow` button at the top right corner (shown in the picture above), and then click at `Save and Run Flow` in the next screen.
+If everything is correct, click at the `Save and create job` button at the top right corner (shown in the picture above).
+
+In the next step, give a name to the data refinery job and then click on `create and run` at the bottom right corner of the screen.
 
 ![alt text](doc/source/images/30.png)
 
-After the Data Refinery Flow is completed, you will be able to see a new csv file at the Assets tab (`AAPL.csv_shaped.csv`):
+After the Data Refinery Flow is completed, go back to your project main page. You will be able to see a new csv file at the Assets tab named `AAPL.csv_shaped.csv`:
 
 ![alt text](doc/source/images/32.png)
 
